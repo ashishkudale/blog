@@ -69,7 +69,18 @@ export default function AdminPage() {
         }),
       });
 
-      const data = await response.json();
+      let data;
+      try {
+        data = await response.json();
+      } catch (jsonError) {
+        console.error('Failed to parse response as JSON:', jsonError);
+        setMessage({
+          type: 'error',
+          text: `Server error: Failed to parse response (${response.status} ${response.statusText})`
+        });
+        setIsSaving(false);
+        return;
+      }
 
       if (response.ok) {
         setMessage({ type: 'success', text: 'Blog post saved successfully!' });
@@ -81,10 +92,18 @@ export default function AdminPage() {
         setCoverImage('');
         setContent('');
       } else {
-        setMessage({ type: 'error', text: data.error || 'Failed to save blog post' });
+        console.error('Failed to create post:', { status: response.status, error: data.error });
+        setMessage({
+          type: 'error',
+          text: data.error || `Failed to save blog post (${response.status})`
+        });
       }
-    } catch {
-      setMessage({ type: 'error', text: 'An error occurred while saving' });
+    } catch (error) {
+      console.error('Network or request error:', error);
+      setMessage({
+        type: 'error',
+        text: `Network error: ${error instanceof Error ? error.message : 'An error occurred while saving'}`
+      });
     }
 
     setIsSaving(false);
@@ -117,18 +136,29 @@ export default function AdminPage() {
 
       {message && (
         <div
-          className={`mb-6 p-4 rounded-lg ${
+          className={`mb-6 p-4 rounded-lg font-medium ${
             message.type === 'success'
-              ? 'bg-green-500/10 text-green-500 border border-green-500/20'
-              : 'bg-red-500/10 text-red-500 border border-red-500/20'
+              ? 'bg-green-500/10 text-green-600 dark:text-green-400 border-2 border-green-500/30'
+              : 'bg-red-500/10 text-red-600 dark:text-red-400 border-2 border-red-500/30'
           }`}
+          role="alert"
         >
-          {message.text}
-          {message.type === 'success' && slug && (
-            <Link href={`/posts/${slug}`} className="ml-2 underline">
-              View post
-            </Link>
-          )}
+          <div className="flex items-start gap-2">
+            <span className="text-xl" aria-hidden="true">
+              {message.type === 'success' ? '✓' : '⚠'}
+            </span>
+            <div className="flex-1">
+              {message.text}
+              {message.type === 'success' && slug && (
+                <Link
+                  href={`/posts/${slug}`}
+                  className="ml-2 underline hover:no-underline font-semibold"
+                >
+                  View post →
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
       )}
 
