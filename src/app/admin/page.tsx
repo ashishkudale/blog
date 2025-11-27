@@ -143,7 +143,7 @@ export default function AdminPage() {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg bg-[var(--code-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
+              className="w-full px-4 py-2 rounded-lg bg-[var(--input-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
               placeholder="Enter post title"
               required
             />
@@ -158,7 +158,7 @@ export default function AdminPage() {
               id="slug"
               value={slug}
               onChange={(e) => setSlug(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg bg-[var(--code-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
+              className="w-full px-4 py-2 rounded-lg bg-[var(--input-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
               placeholder="post-url-slug"
               required
             />
@@ -174,7 +174,7 @@ export default function AdminPage() {
             value={excerpt}
             onChange={(e) => setExcerpt(e.target.value)}
             rows={2}
-            className="w-full px-4 py-2 rounded-lg bg-[var(--code-bg)] border border-border focus:border-accent focus:outline-none transition-colors resize-none"
+            className="w-full px-4 py-2 rounded-lg bg-[var(--input-bg)] border border-border focus:border-accent focus:outline-none transition-colors resize-none"
             placeholder="Brief description of the post"
             required
           />
@@ -190,7 +190,7 @@ export default function AdminPage() {
               id="author"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg bg-[var(--code-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
+              className="w-full px-4 py-2 rounded-lg bg-[var(--input-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
               placeholder="Author name"
             />
           </div>
@@ -204,7 +204,7 @@ export default function AdminPage() {
               id="tags"
               value={tags}
               onChange={(e) => setTags(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg bg-[var(--code-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
+              className="w-full px-4 py-2 rounded-lg bg-[var(--input-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
               placeholder="React, JavaScript, Tutorial"
             />
           </div>
@@ -219,7 +219,7 @@ export default function AdminPage() {
             id="coverImage"
             value={coverImage}
             onChange={(e) => setCoverImage(e.target.value)}
-            className="w-full px-4 py-2 rounded-lg bg-[var(--code-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
+            className="w-full px-4 py-2 rounded-lg bg-[var(--input-bg)] border border-border focus:border-accent focus:outline-none transition-colors"
             placeholder="https://images.unsplash.com/..."
           />
         </div>
@@ -233,7 +233,7 @@ export default function AdminPage() {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             rows={15}
-            className="w-full px-4 py-2 rounded-lg bg-[var(--code-bg)] border border-border focus:border-accent focus:outline-none transition-colors font-mono text-sm resize-y"
+            className="w-full px-4 py-2 rounded-lg bg-[var(--input-bg)] border border-border focus:border-accent focus:outline-none transition-colors font-mono text-sm resize-y"
             placeholder="Write your blog post in Markdown..."
             required
           />
