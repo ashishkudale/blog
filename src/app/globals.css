@@ -9,6 +9,7 @@
   --accent-hover: #1d4ed8;
   --code-bg: #1e1e1e;
   --code-text: #d4d4d4;
+  --input-bg: #f9fafb;
 }
 
 @theme inline {
@@ -31,6 +32,7 @@
     --accent-hover: #60a5fa;
     --code-bg: #1e1e1e;
     --code-text: #d4d4d4;
+    --input-bg: #1f2937;
   }
 }
 
